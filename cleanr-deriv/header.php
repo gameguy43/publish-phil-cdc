@@ -21,7 +21,7 @@
  <h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a><span class="description"><?php bloginfo('description'); ?></span></h1>	
 
 <ul id="nav">
-  <li class="last-child"><a href="<?php bloginfo('wpurl'); ?>">About Us</a></li>
+  <li class="last-child"><a href="<?php bloginfo('wpurl'); ?>">About</a></li>
 </ul>
 <!--
 <ul id="nav">

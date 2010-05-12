@@ -1,10 +1,10 @@
 <hr />
 <div id="footer" class="grid_16">
 <p>
-This project is in no way affiliated with The Center for Disease Control or its Public Health Image Library project. <a href="<?php bloginfo('wpurl'); ?>">About us &raquo;</a>
+This project is in no way affiliated with The Center for Disease Control or its Public Health Image Library project. <a href="<?php bloginfo('wpurl'); ?>">About &raquo;</a>
 </p>
 <p>
-Powered by <a href="http://wordpress.org/">WordPress</a> with a derivative of cleanr by <a href="http://wpshoppe.com/">WPShoppe</a>. Also duct tape.
+Powered by <a href="http://wordpress.org/">WordPress</a> with <a href="http://github.com/gameguy43/publish-phil-cdc">a derivative</a> of cleanr by <a href="http://wpshoppe.com/">WPShoppe</a>. Also duct tape.
 </p>
 <!--
 	<p>

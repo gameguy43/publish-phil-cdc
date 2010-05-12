@@ -19,11 +19,16 @@ body {font-size: 18px;font-family: Georgia}
 h1,h2,h3,h4 {letter-spacing:-1px}
 h1,h2,h3,h4,#nav,small,.postmetadata, .small{font-family: Helvetica, Arial;}
 h2 {margin: 0 0 20px 0;padding: 0;color:#666;}
+h3 {margin: 0 0 20px 0;padding: 0;color:#666; font-size: 1.2em; }
 a {color:#999;text-decoration: none;border-bottom: 1px solid #eee}
 a:hover {color:#000;border-bottom:1px solid #ccc}
 h2 a { color:#000;text-decoration: none;font-size: 30px; border:none}
 h2 a:hover, #header h1 a:hover { color:#c00;border:none}
 small {font-size:10px;color:#ccc; padding:10px 8px 5px 0px;float:left;text-transform: uppercase;font-weight: bold;}
+#content-onecol.homepage p { margin-bottom: 10px;}
+#content-onecol.homepage .big_homepage_links a{ font-size: 1.4em; margin-right: 30px; margin-bottom: 10px; }
+#content-onecol.homepage .big_homepage_links span{ display: block;}
+#content-onecol.homepage p.big_homepage_links {margin: 0 0 35px 0; padding-left: 15px; border-left: 1px solid #efefef}
 p {color:#555}
 hr {margin:0; clear:both}
 
@@ -180,7 +185,7 @@ ol.commentlist li.thread-odd {}
 #sidebar ul li {color: #666}
 
 /* FOOTER */
-#footer p {text-align: center; font-size: 14px; font-style: italic; margin: 15px 30px 0px 30px;}
+#footer p {text-align: center; font-size: .65em; font-style: italic; margin: 0 30px 0px 30px;}
 
 
 

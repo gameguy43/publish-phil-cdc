@@ -3,23 +3,18 @@
  * Template Name: Image-View
  * */
 
-$parker_machine = True;
-$dreamhost	 = False;
 
-$max_id = 3;
-//$max_id = 11850;
 
 if(!$wp_outofbounds){
     require_once("sql.php");
-    //random?!
-    if($rand){
-        $id = rand(1, $max_id);
-    }
-    else{
-        $id = $post->ID; 
-    }
-    $db_get_all_data_by_id_query = "SELECT * from phil WHERE id = " . $id;
+    $id = $post->ID; 
 
+    //TODO: OH CRAP: WHAT WE NEED IS A PYTHON SCRIPT TO SET UP THE RIGHT LINKED LIST SORT OF STRUCTURE FOR THE DB
+    //this is in order to meet the ends of having our web viewer successfully skip over missing entries
+    //(we also need a flag which tells us whether or not the current entry appears to be dead)
+
+    /*grabbing the image data from the db */
+    $db_get_all_data_by_id_query = "SELECT * from phil WHERE id = " . $id;
     $db_connection = mysql_connect($db_host, $db_user, $db_pass);
     if (!$db_connection) {
             die('Could not connect: ' . mysql_error());
@@ -27,7 +22,31 @@ if(!$wp_outofbounds){
     mysql_select_db($db_db);
     $db_result = mysql_query($db_get_all_data_by_id_query);
     $data = mysql_fetch_assoc($db_result);
+    /* done grabbing the image data from the db*/
+    //if we've hit a dud--meaning that the image doesn't exist in the database
+    $nextid = $id+1;
+    $previd = $id-1;
+    if(!$data['url_to_lores_img']){
+        if($_GET['from'] == 'next'){
+            $id = $nextid;
+        }
+        else if($_GET['from'] == 'prev'){
+            $id = $previd;
+        }
+        else if($_GET['from'] == 'rand'){
+            $id = rand(1, $max_id);
+        }
+        else{
+            //NOTE: this shouldn't happen
+            $id = $nextid;
+        }
+        header("Location: " . get_bloginfo('wpurl') . "?p=" . $id . "&from=" . $_GET['from']);
 
+    }
+
+
+    /*
+     * NOTE: we're not doing this anymore because it hammers the db too hard and is the wrong solution anyway
     //getting next and previous id's
     //next:
     $nextid = False;
@@ -50,6 +69,7 @@ if(!$wp_outofbounds){
         }
 
     }
+     */
     
 }
 
@@ -158,11 +178,11 @@ sqlite_unbuffered_query($db_handle, $db_select_by_id_query);
 <?php get_header(); ?>
 <div id="navlinks">
     <?php if($previd) { ?>
-    <a href="<?php bloginfo('wpurl'); echo "?p=" . ($id-1) ?>">Prev</a>
+    <a href="<?php bloginfo('wpurl'); echo "?p=" . ($id-1) ?>&from=prev">Prev</a>
     <?php } ?>
     &nbsp;
     <?php if($nextid) { ?>
-    <a style="float: right;" href="<?php bloginfo('wpurl'); echo "?p=" . ($id+1) ?>">Next</a>
+    <a style="float: right;" href="<?php bloginfo('wpurl'); echo "?p=" . ($id+1) ?>&from=next">Next</a>
     <?php } ?>
     </div>
 

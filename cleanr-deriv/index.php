@@ -1,9 +1,10 @@
 <?php
 
 if($_GET['rand']){
-    $rand = True;
-    require_once("page.php");
-    exit;
+    require_once("sql.php");
+    $id = rand(1, $max_id);
+    header("Location: " . get_bloginfo('wpurl') . "?p=" . $id . "&from=rand");
+    exit();
 
 }
 

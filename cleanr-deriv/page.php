@@ -241,8 +241,12 @@ sqlite_unbuffered_query($db_handle, $db_select_by_id_query);
 <h6>Copyright Status</h6>
 <div class="block_datapt">
 <p>
-<?php echo $data['copyright'] ?>
-</p>
+<?php
+    $copyright_w_rel = str_replace('None', '<a href="http://creativecommons.org/licenses/publicdomain/" rel="license">None</a>', $data['copyright']);
+?>
+
+<?php echo $copyright_w_rel ?>
+
 </div>
 <?php } ?>
 

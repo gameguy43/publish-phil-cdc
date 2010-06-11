@@ -237,7 +237,7 @@ sqlite_unbuffered_query($db_handle, $db_select_by_id_query);
 </div>
 
 
-<?php if($data['links']){ ?>
+<?php if($data['copyright']){ ?>
 <h6>Copyright Status</h6>
 <div class="block_datapt">
 <p>

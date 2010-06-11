@@ -1,5 +1,4 @@
 <?php
-
 if($_GET['rand']){
     require_once("sql.php");
     $id = rand(1, $max_id);

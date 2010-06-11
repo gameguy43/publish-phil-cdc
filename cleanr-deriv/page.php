@@ -230,7 +230,7 @@ sqlite_unbuffered_query($db_handle, $db_select_by_id_query);
 <li>High Resolution: <a href="<?php echo $data['path_to_hires_img'] ?>">ROD server</a>, <a href="<?php echo $data['url_to_hires_img'] ?>">CDC server</a></li>
 <?php } ?>
 <?php if($data['url_to_thumb_img']) {?>
-<li>Thumbnail: <a href="<?php echo $data['path_to_thumb_img'] ?>">Rod server</a>, <a href="<?php echo $data['url_to_thumb_img'] ?>">CDC Server</a></li>
+<li>Thumbnail: <a href="<?php echo $data['path_to_thumb_img'] ?>">ROD server</a>, <a href="<?php echo $data['url_to_thumb_img'] ?>">CDC server</a></li>
 <?php } ?>
 <li></li>
 </ul>

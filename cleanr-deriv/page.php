@@ -153,7 +153,31 @@ function gen_data_dir($id){
 }
 
 
-$data['desc'] = cleanup_html($data['desc']);
+function unicode_fix($str){
+    $badwordchars=array(
+        '\xe2\x80\x98', // left single quote
+        '\xe2\x80\x99', // right single quote
+        '\xe2\x80\x9c', // left double quote
+        '\xe2\x80\x9d', // right double quote
+        '\xe2\x80\x94', // em dash
+        '\xe2\x80\xa6' // elipses
+    );
+    $fixedwordchars=array(
+        "&#8216;",
+        "&#8217;",
+        '&#8220;',
+        '&#8221;',
+        '&mdash;',
+        '&#8230;'
+    );
+//    $str = iconv("Latin1", "UTF-8", $str);
+//    $str = strval($str);
+//    $str = utf8_decode($str);
+    $str = str_replace($badwordchars,$fixedwordchars,$str);
+    return $str;
+}
+
+$data['desc'] = unicode_fix(cleanup_html($data['desc']));
 $data['links'] = parse_links($data['links']);
 $data['categories'] = parse_categories($data['categories']);
 

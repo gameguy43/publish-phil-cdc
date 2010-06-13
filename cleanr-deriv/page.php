@@ -80,7 +80,9 @@ function cleanup_html($html){
 }
 
 function parse_links($python_list){
-    $trimmed = trim(cleanup_html($python_list), '[]');
+    $trimmed = cleanup_html($python_list);
+    $trimmed = trim($trimmed, '""');
+    $trimmed = trim($trimmed, '[]');
     if(!$trimmed){
         return False;
     }
@@ -90,6 +92,8 @@ function parse_links($python_list){
         $pair = str_replace("u'", "", $pair);
         $pair = trim($pair, "()");
         $pair = explode("', ", $pair);
+        //TODO: something like the below to fix unicode non-niceness. see image id 336's related links
+        //$pair[0] = utf8_encode($pair[0]);
         $pair[1] = trim($pair[1], "'");
         $pairs[$key] = $pair;
     }
@@ -100,24 +104,24 @@ function parse_links($python_list){
     }
     $return .= "</ul>";
     return $return;
-    
-
 }
+
 function this_many_spaces($n){
     $return = "";
     for($i = 1; $i <= $n; $i++){
         $return .= "&nbsp;&nbsp;";
     }
     return $return;
-
 }
+
 function parse_categories($python_list){
     $trimmed = str_replace("u'", "", $python_list);
-    $trimmed = trim($trimmed, "'\n");
+    $trimmed = trim($trimmed, '\n');
+    $trimmed = trim($trimmed, '\'');
     if(!$trimmed){
         return False;
     }
-    $leaves = explode("\n", $trimmed);
+    $leaves = explode('\n', $trimmed);
     foreach($leaves as $key => $leaf){
         $leaf_explosion = explode(" ", $leaf);
         $leaf = array();

@@ -18,7 +18,10 @@
 <body>
 <div class="container_16">
 <div id="header" class="grid_16">
+<!--
  <h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a><span class="description"><?php bloginfo('description'); ?></span></h1>	
+-->
+ <h1><a href="<?php echo get_option('home'); ?>/">Release Our Data</a></h1>	
 
 <ul id="nav">
   <li class="last-child"><a href="<?php bloginfo('wpurl'); ?>">About</a></li>

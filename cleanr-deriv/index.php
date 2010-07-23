@@ -1,6 +1,7 @@
 <?php
+require_once("sql.php");
+
 if($_GET['rand']){
-    require_once("sql.php");
     $id = rand(1, $max_id);
     header("Location: " . get_bloginfo('wpurl') . "?p=" . $id . "&from=rand");
     exit();
@@ -21,6 +22,10 @@ if($_GET['rand']){
 
 <span>
 <a href="<?php bloginfo('wpurl') ?>?p=1">Browse the database from the beginning &raquo;</a>
+</span>
+
+<span>
+<a href="<?php echo $path_to_data ?>">Browse the raw data&raquo;</a>
 </span>
 </p>
 
